@@ -2,10 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/checked"
         android:label="@string/app_name"
         android:roundIcon="@drawable/checked"
@@ -13,16 +16,13 @@
         android:theme="@style/Theme.StudentAttendance"
         tools:targetApi="31">
         <activity
-            android:name=".SheetActivity"
+            android:name=".Activities.NoteDetails"
             android:exported="false" />
         <activity
-            android:name=".sheetlistMainActivity"
+            android:name=".Activities.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".StudentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".Activities.SignUpActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +30,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activities.OpenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.DrawerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SheetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.sheetlistMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.StudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.MainActivity"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

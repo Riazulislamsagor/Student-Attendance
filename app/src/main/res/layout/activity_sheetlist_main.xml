@@ -5,14 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/black"
-    tools:context=".sheetlistMainActivity">
+    android:background="@color/white"
+    tools:context=".Activities.sheetlistMainActivity">
+
     <include
-        layout="@layout/toolbar"/>
+        layout="@layout/toolbar" />
+
     <ListView
         android:divider="@android:color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/sheetlistviewId"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/sheetlistviewId" />
+
+
 
 </LinearLayout>

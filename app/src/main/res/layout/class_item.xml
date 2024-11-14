@@ -6,13 +6,12 @@
     android:layout_marginTop="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginLeft="8dp"
-    android:padding="8dp"
-
-    android:layout_height="100dp">
+    android:layout_height="96dp">
 
     <RelativeLayout
-
+        android:background="@color/normal"
         android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -20,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:orientation="vertical"
+            android:layout_marginTop="8dp"
             android:padding="16dp"
            >
             <TextView
@@ -35,14 +35,11 @@
                 android:layout_height="wrap_content"
                 android:text="Subject Name"
                 android:textSize="15sp"
-                android:textColor="#120101"
+                android:textColor="#878787"
                 android:id="@+id/subjectId"/>
 
         </LinearLayout>
-
     </RelativeLayout>
-
-
     </androidx.cardview.widget.CardView>
 
 

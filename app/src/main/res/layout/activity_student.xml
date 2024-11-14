@@ -5,15 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/black"
-    tools:context=".StudentActivity">
+    tools:context=".Activities.StudentActivity">
     <include
         android:id="@+id/toolbarstudent"
         layout="@layout/toolbar"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/studentrecycleviewId"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:listitem="@layout/student_item" />
 
 
 </LinearLayout>

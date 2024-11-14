@@ -1,7 +1,5 @@
 package com.example.studentattendance;
 
-import static com.example.studentattendance.R.id.*;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.view.ContextMenu;
@@ -31,7 +29,7 @@ Context context;
         this.onItemClickListener = onItemClickListener;
     }
 
-    public StudentAdapter(Context context, ArrayList<StudentItem> studentItem) {
+    public StudentAdapter(Context context, ArrayList<StudentItem> studentItem, DataHelper dataHelper) {
         this.context=context;
 
         this.studentItem = studentItem;

@@ -5,13 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SheetActivity">
+    tools:context=".Activities.SheetActivity">
 
-    <include
-        layout="@layout/toolbar"/>
-    <ScrollView
+    <!-- Include your toolbar layout -->
+    <include layout="@layout/toolbar"/>
+
+    <!-- TextView for displaying the current month -->
+    <TextView
+        android:id="@+id/currentmonthId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Month"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_gravity="center"/>
+
+    <!-- Spinner for month selection -->
+
+    <!-- ScrollView to allow scrolling of large tables -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:scrollbars="none">
         <HorizontalScrollView
             android:layout_width="wrap_content"
@@ -20,8 +35,10 @@
             <LinearLayout
                 android:padding="16dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <!-- TableLayout for displaying data -->
                 <TableLayout
                     android:id="@+id/tablelayoutid"
                     android:layout_width="wrap_content"
@@ -32,11 +49,15 @@
                     android:showDividers="beginning|middle|end"
                     android:stretchColumns="*"/>
             </LinearLayout>
-
         </HorizontalScrollView>
-
-
-        
     </ScrollView>
 
+    <!-- Button to generate PDF -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/generatePdfButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generate PDF"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"/>
 </LinearLayout>

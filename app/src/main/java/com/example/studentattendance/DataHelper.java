@@ -130,7 +130,7 @@ public class DataHelper extends SQLiteOpenHelper {
         return database.update(CLASS_TABLE_NAME, values, C_ID + "=?", new String[]{String.valueOf(cid)});
     }
 
-    long addStudent(long cid, int roll, String name) {
+    public long addStudent(long cid, int roll, String name) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(C_ID, cid);
@@ -139,24 +139,24 @@ public class DataHelper extends SQLiteOpenHelper {
         return database.insert(STUDENT_TABLE_NAME, null, values);
     }
 
-    Cursor getStudentTable(long cid) {
+    public Cursor getStudentTable(long cid) {
         SQLiteDatabase database = this.getReadableDatabase();
         return database.query(STUDENT_TABLE_NAME, null, C_ID + "=?", new String[]{String.valueOf(cid)}, null, null, STUDENT_ROLL_KEY);
     }
 
-    int deleteStudent(long sid) {
+    public int deleteStudent(long sid) {
         SQLiteDatabase database = this.getReadableDatabase();
         return database.delete(STUDENT_TABLE_NAME, S_ID + "=?", new String[]{String.valueOf(sid)});
     }
 
-    long updateStudent(long sid, String name) {
+    public long updateStudent(long sid, String name) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(STUDENT_NAME_KEY, name);
         return database.update(STUDENT_TABLE_NAME, values, S_ID + "=?", new String[]{String.valueOf(sid)});
     }
 
-    long addStatus(long sid, long cid, String date, String status) {
+    public long addStatus(long sid, long cid, String date, String status) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(S_ID, sid);
@@ -166,7 +166,7 @@ public class DataHelper extends SQLiteOpenHelper {
         return database.insert(STATUS_TABLE_NAME, null, values);
     }
 
-    long updateStatus(long sid, String date, String status) {
+    public long updateStatus(long sid, String date, String status) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(STATUS_KEY, status);
@@ -175,7 +175,7 @@ public class DataHelper extends SQLiteOpenHelper {
     }
 
     @SuppressLint("Range")
-    String getStatus(long sid, String date) {
+    public String getStatus(long sid, String date) {
         String status = null;
         SQLiteDatabase database = this.getReadableDatabase();
         String whereClause = DATE_KEY + "='" + date + "' AND " + S_ID + "=" + sid;
@@ -184,7 +184,7 @@ public class DataHelper extends SQLiteOpenHelper {
         return status;
     }
 
-    Cursor getDistinctMonths(long cid) {
+    public Cursor getDistinctMonths(long cid) {
         SQLiteDatabase database = this.getReadableDatabase();
         return database.query(STATUS_TABLE_NAME, new String[]{DATE_KEY}, C_ID + "=" + cid, null, "substr(" + DATE_KEY + ",4,7)", null, null);//01.04.2020
     }
@@ -194,4 +194,31 @@ public class DataHelper extends SQLiteOpenHelper {
         return database.delete(STATUS_TABLE_NAME, DATE_KEY + "=?", new String[]{String.valueOf(date)});
     }
 
+    public int getPresentCount(long cid, String date) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM " + STATUS_TABLE_NAME +
+                " WHERE " + C_ID + " = ? AND " + DATE_KEY + " = ? AND " + STATUS_KEY + " = ?";
+        Cursor cursor = database.rawQuery(query, new String[]{String.valueOf(cid), date, "P"});
+        if (cursor.moveToFirst()) {
+            int count = cursor.getInt(0);
+            cursor.close();
+            return count;
+        }
+        cursor.close();
+        return 0;
+    }
+
+    public int getAbsentCount(long cid, String date) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM " + STATUS_TABLE_NAME +
+                " WHERE " + C_ID + " = ? AND " + DATE_KEY + " = ? AND " + STATUS_KEY + " = ?";
+        Cursor cursor = database.rawQuery(query, new String[]{String.valueOf(cid), date, "A"});
+        if (cursor.moveToFirst()) {
+            int count = cursor.getInt(0);
+            cursor.close();
+            return count;
+        }
+        cursor.close();
+        return 0;
+    }
 }
