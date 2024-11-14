@@ -1,15 +1,17 @@
-package com.example.studentattendance;
+package com.example.studentattendance.Adapters;
 
 import android.content.Context;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.studentattendance.R;
+import com.example.studentattendance.Models.class_items;
 
 import java.util.ArrayList;
 

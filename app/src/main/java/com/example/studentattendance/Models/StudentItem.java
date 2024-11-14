@@ -1,4 +1,4 @@
-package com.example.studentattendance;
+package com.example.studentattendance.Models;
 
 public class StudentItem {
     private long sid;

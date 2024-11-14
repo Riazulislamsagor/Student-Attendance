@@ -1,4 +1,4 @@
-package com.example.studentattendance;
+package com.example.studentattendance.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,6 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.studentattendance.DataHelper;
+import com.example.studentattendance.R;
+import com.example.studentattendance.Models.StudentItem;
 
 import java.util.ArrayList;
 

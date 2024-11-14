@@ -1,4 +1,4 @@
-package com.example.studentattendance;
+package com.example.studentattendance.Models;
 
 public class class_items {
     long cid;

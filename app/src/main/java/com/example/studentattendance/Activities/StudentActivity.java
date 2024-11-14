@@ -21,8 +21,8 @@ import com.example.studentattendance.DataHelper;
 import com.example.studentattendance.MyCalender;
 import com.example.studentattendance.Mydialog;
 import com.example.studentattendance.R;
-import com.example.studentattendance.StudentAdapter;
-import com.example.studentattendance.StudentItem;
+import com.example.studentattendance.Adapters.StudentAdapter;
+import com.example.studentattendance.Models.StudentItem;
 
 import java.util.ArrayList;
 
